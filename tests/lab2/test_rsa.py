@@ -1,18 +1,21 @@
 import unittest
+import os
 import sys
-sys.path.append('../../src/lab2')
-from rsa import is_prime, gcd, multiplicative_inverse, generate_keypair, encrypt, decrypt
+parent_dir = os.path.abspath(os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")), ".."))
+sys.path.append(parent_dir)
+
+from src.lab2.rsa import is_prime, gcd, multiplicative_inverse, generate_keypair, encrypt, decrypt
 
 class TestRSAFunctions(unittest.TestCase):
 
     def test_is_prime(self):
-        self.assertTrue(is_prime(2))
-        self.assertTrue(is_prime(11))
-        self.assertFalse(is_prime(8))
+        self.assertTrue(is_prime(3))
+        self.assertTrue(is_prime(17))
+        self.assertFalse(is_prime(10))
 
     def test_gcd(self):
         self.assertEqual(gcd(12, 15), 3)
-        self.assertEqual(gcd(3, 7), 1)
+        self.assertEqual(gcd(5, 11), 1)
 
     def test_multiplicative_inverse(self):
         self.assertEqual(multiplicative_inverse(7, 40), 23)
